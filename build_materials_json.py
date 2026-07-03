@@ -105,8 +105,22 @@ def clean(s):
 
 def main(xlsx_path, out_path="materials.json"):
     df = pd.read_excel(xlsx_path, sheet_name=SHEET, header=0)
-    df = df.iloc[:, :5]
-    df.columns = ["Title", "Type", "Domain", "Function", "Link"]
+
+    # Find each needed column by its heading (case-insensitive), so the file still
+    # works if columns are inserted, moved or reordered. Falls back to position
+    # (A-E) only if a heading is missing.
+    lower = {str(c).strip().lower(): c for c in df.columns}
+    def col(name, default_idx):
+        if name in lower:
+            return df[lower[name]]
+        return df.iloc[:, default_idx] if default_idx < df.shape[1] else ""
+    df = pd.DataFrame({
+        "Title":    col("title", 0),
+        "Type":     col("type", 1),
+        "Domain":   col("domain", 2),
+        "Function": col("function", 3),
+        "Link":     col("link", 4),
+    })
     df = df.dropna(subset=["Title"])
     for c in df.columns:
         df[c] = df[c].map(clean)
