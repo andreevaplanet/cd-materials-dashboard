@@ -6,7 +6,7 @@
   "area": "Information Management & Technology",
   "areaColor": "#1E5AA8",
   "areaCode": "IMT",
-  "link": "All"
+  "link": "https://community.wmo.int/node/33669"
  },
  {
   "title": "Operational Newsletter",
@@ -15,7 +15,7 @@
   "area": "Information Management & Technology",
   "areaColor": "#1E5AA8",
   "areaCode": "IMT",
-  "link": "All"
+  "link": "https://community.wmo.int/node/33765"
  },
  {
   "title": "WIS Manuals",
@@ -42,7 +42,7 @@
   "area": "Information Management & Technology",
   "areaColor": "#1E5AA8",
   "areaCode": "IMT",
-  "link": "IT and Systems Developer (NMHS)"
+  "link": "https://docs.wis2box.wis.wmo.int/en/latest/"
  },
  {
   "title": "WIS2 Training",
@@ -123,7 +123,7 @@
   "area": "Earth Observing Systems & Networks",
   "areaColor": "#0E8A6B",
   "areaCode": "EOS",
-  "link": ""
+  "link": "https://etrp.wmo.int/pluginfile.php/81027/mod_folder/content/0/WMO_ABO-MR_User%20Manual_V2-beta.pdf"
  },
  {
   "title": "WIGOS Technical Reports",
