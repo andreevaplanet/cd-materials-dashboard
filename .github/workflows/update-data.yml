@@ -1,0 +1,86 @@
+# Refreshes the dashboard's data file (materials.json) from the Excel workbook.
+#
+# It runs on three occasions:
+#   1. Automatically every day (the "schedule" below).
+#   2. Whenever you press the "Run workflow" button on the Actions tab.
+#   3. Whenever a new Excel file or converter is uploaded to the repository.
+#
+# What it does: downloads the Excel file from SharePoint, converts it to
+# materials.json, and saves that file back into the repository. GitHub then
+# republishes the website automatically.
+#
+# This file must live at:  .github/workflows/update-data.yml
+
+name: Refresh dashboard data
+
+on:
+  workflow_dispatch:            # the "Run workflow" button (update right away)
+  schedule:
+    - cron: "0 5 * * *"         # every day at 05:00 UTC
+  push:
+    paths:
+      - "New_CD_dashboard.xlsx" # also refresh if a new Excel file is uploaded
+      - "build_materials_json.py"
+
+permissions:
+  contents: write               # lets the workflow save materials.json back
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the repository files
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install the libraries the converter needs
+        run: pip install pandas openpyxl
+
+      - name: Try to download the Excel file from SharePoint
+        continue-on-error: true   # if this fails, we fall back to a copy in the repo
+        env:
+          # The public "anyone with the link" address of the Excel file, with
+          # &download=1 added so it downloads the file instead of opening a page.
+          # If the sharing link ever changes, update it here.
+          EXCEL_URL: "https://wmoomm.sharepoint.com/:x:/s/INFCOMWorkspace/IQCBTXK2iDFWQJJaCBYdeTJFAUd_3LHXzDAguWPOdHsJXZ4?e=p7bygd&download=1"
+        run: |
+          curl -L -A "Mozilla/5.0" -o downloaded.xlsx "$EXCEL_URL" || true
+          # An Excel file always starts with the letters "PK". If ours does,
+          # keep it. If not, it was probably a sign-in or error page, so discard it.
+          if head -c 2 downloaded.xlsx | grep -q "PK"; then
+            mv downloaded.xlsx New_CD_dashboard.xlsx
+            echo "Downloaded the latest Excel file from SharePoint."
+          else
+            echo "SharePoint did not return a valid Excel file."
+            echo "Will use the copy of New_CD_dashboard.xlsx stored in the repository, if present."
+            rm -f downloaded.xlsx
+          fi
+
+      - name: Make sure we have an Excel file to convert
+        run: |
+          if [ ! -f New_CD_dashboard.xlsx ]; then
+            echo "::error::No Excel file to work with. The SharePoint download did not"
+            echo "::error::work and there is no New_CD_dashboard.xlsx in the repository."
+            echo "::error::Fix: upload New_CD_dashboard.xlsx to the repository (see the guide)."
+            exit 1
+          fi
+
+      - name: Convert the Excel file into materials.json
+        run: python build_materials_json.py New_CD_dashboard.xlsx materials.json
+
+      - name: Save materials.json (only if something changed)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add materials.json
+          if git diff --staged --quiet; then
+            echo "No changes in the data - nothing to save."
+          else
+            git commit -m "Refresh materials.json from Excel"
+            git push
+            echo "Saved updated materials.json. The website will refresh shortly."
+          fi
