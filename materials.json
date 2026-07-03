@@ -6,7 +6,7 @@
   "area": "Information Management & Technology",
   "areaColor": "#1E5AA8",
   "areaCode": "IMT",
-  "link": "https://community.wmo.int/node/33669"
+  "link": "All"
  },
  {
   "title": "Operational Newsletter",
@@ -15,7 +15,7 @@
   "area": "Information Management & Technology",
   "areaColor": "#1E5AA8",
   "areaCode": "IMT",
-  "link": "https://community.wmo.int/node/33765"
+  "link": "All"
  },
  {
   "title": "WIS Manuals",
@@ -42,7 +42,7 @@
   "area": "Information Management & Technology",
   "areaColor": "#1E5AA8",
   "areaCode": "IMT",
-  "link": "https://docs.wis2box.wis.wmo.int/en/latest/"
+  "link": "IT and Systems Developer (NMHS)"
  },
  {
   "title": "WIS2 Training",
