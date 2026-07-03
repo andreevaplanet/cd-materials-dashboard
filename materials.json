@@ -1,0 +1,587 @@
+[
+ {
+  "title": "WIS Newsletter",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Information Management & Technology",
+  "areaColor": "#1E5AA8",
+  "areaCode": "IMT",
+  "link": "https://community.wmo.int/node/33669"
+ },
+ {
+  "title": "Operational Newsletter",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Information Management & Technology",
+  "areaColor": "#1E5AA8",
+  "areaCode": "IMT",
+  "link": "https://community.wmo.int/node/33765"
+ },
+ {
+  "title": "WIS Manuals",
+  "type": "Manual and Guides",
+  "domain": "All domains",
+  "area": "Information Management & Technology",
+  "areaColor": "#1E5AA8",
+  "areaCode": "IMT",
+  "link": "https://library.wmo.int/index.php?lvl=notice_display&id=9254"
+ },
+ {
+  "title": "Guide to WIS",
+  "type": "Manual and Guides",
+  "domain": "All domains",
+  "area": "Information Management & Technology",
+  "areaColor": "#1E5AA8",
+  "areaCode": "IMT",
+  "link": "https://library.wmo.int/idurl/4/28988"
+ },
+ {
+  "title": "WIS2 in a Box",
+  "type": "Training and Educational materials",
+  "domain": "All domains",
+  "area": "Information Management & Technology",
+  "areaColor": "#1E5AA8",
+  "areaCode": "IMT",
+  "link": "https://docs.wis2box.wis.wmo.int/en/latest/"
+ },
+ {
+  "title": "WIS2 Training",
+  "type": "Training and Educational materials",
+  "domain": "All domains",
+  "area": "Information Management & Technology",
+  "areaColor": "#1E5AA8",
+  "areaCode": "IMT",
+  "link": "https://community.wmo.int/node/37819"
+ },
+ {
+  "title": "WIGOS Newsletters",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://community.wmo.int/node/33511"
+ },
+ {
+  "title": "Aircraft based Observation and AMDAR Newsletters",
+  "type": "Outreach and communication materials",
+  "domain": "Weather",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://community.wmo.int/node/37133"
+ },
+ {
+  "title": "WIGOS Manual",
+  "type": "Manual and Guides",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://library.wmo.int/?lvl=notice_display&id=19223"
+ },
+ {
+  "title": "Guide to WIGOS",
+  "type": "Manual and Guides",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://library.wmo.int/index.php?lvl=notice_display&id=20026"
+ },
+ {
+  "title": "WIGOS Metadata Standard",
+  "type": "Manual and Guides",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://library.wmo.int/index.php?lvl=more_results&mode=extended"
+ },
+ {
+  "title": "Technical Guidelines for RWC on WDQMS (WMO-No. 1224)",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://library.wmo.int/idurl/4/56347"
+ },
+ {
+  "title": "High-level Guidance on Evolution of Global Observing Systems 2023–2027 (WMO-No. 1334)",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://library.wmo.int/idurl/4/68862"
+ },
+ {
+  "title": "Aircraft-based Observations Metadata Repository Manual",
+  "type": "Manual and Guides",
+  "domain": "Weather",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": ""
+ },
+ {
+  "title": "WIGOS Technical Reports",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://community.wmo.int/activity-areas/WIGOS/Technical%20reports"
+ },
+ {
+  "title": "OSCAR/Surface User Manual",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://library.wmo.int/idurl/4/56451"
+ },
+ {
+  "title": "WDQMS User Guide",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://confluence.ecmwf.int/display/WIGOSWT/User+Guide"
+ },
+ {
+  "title": "User Manual on the Incident Management System (IMS-RWC)",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://library.wmo.int/idurl/4/57436"
+ },
+ {
+  "title": "WIGOS Learning Portal",
+  "type": "Training and Educational materials",
+  "domain": "All domains",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://etrp.wmo.int/course/view.php?id=146"
+ },
+ {
+  "title": "RA II WIGOS Newsletters",
+  "type": "Outreach and communication materials",
+  "domain": "Weather",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://www.jma.go.jp/jma/jma-eng/satellite/ra2wigosproject/ra2wigosnewsletter.html"
+ },
+ {
+  "title": "Space-based Weather and Climate Extremes Monitoring (SWCEM) Newsletters",
+  "type": "Outreach and communication materials",
+  "domain": "Weather",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://public.wmo.int/en/programmes/wmo-space-programme/swcem"
+ },
+ {
+  "title": "Space-based Weather and Climate Extremes Monitoring (SWCEM) Newsletters",
+  "type": "Outreach and communication materials",
+  "domain": "Climate",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://public.wmo.int/en/programmes/wmo-space-programme/swcem"
+ },
+ {
+  "title": "DBNet Newsletter",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://community.wmo.int/node/37663"
+ },
+ {
+  "title": "Guide to the Direct Broadcast Network for Near-real-time Relay of Low Earth Orbit Satellite Data (WMO-No. 1185)",
+  "type": "Manual and Guides",
+  "domain": "All domains",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://library.wmo.int/idurl/4/55778"
+ },
+ {
+  "title": "Guidelines on Best Practices for User Readiness for New Meteorological Satellite (WMO-No. 1187)",
+  "type": "Other types",
+  "domain": "Weather",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://library.wmo.int/idurl/4/55542"
+ },
+ {
+  "title": "Guidelines on Satellite Skills and Knowledge for Operational Meteorologists (SP-12)",
+  "type": "Other types",
+  "domain": "Weather",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://library.wmo.int/?lvl=notice_display&id=19843"
+ },
+ {
+  "title": "Guidelines for Satellite-based Nowcasting in Africa (WMO-No. 1309)",
+  "type": "Other types",
+  "domain": "Weather",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://library.wmo.int/idurl/4/58348"
+ },
+ {
+  "title": "OSCAR/Space",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://space.oscar.wmo.int/spacecapabilities"
+ },
+ {
+  "title": "WMO-CGMS VLab",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://www.wmo-sat.info/vlab/"
+ },
+ {
+  "title": "Coordination Group on Satellite Data Requirements (RA III-IV-SDR Group)",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://sdr.ucr.ac.cr/"
+ },
+ {
+  "title": "RA I Dissemination Expert Group",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://community.wmo.int/node/36413"
+ },
+ {
+  "title": "RA II WIGOS Project",
+  "type": "Outreach and communication materials",
+  "domain": "Weather",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://www.jma.go.jp/jma/jma-eng/satellite/ra2wigosproject/ra2wigosproject-intro_en_jma.html"
+ },
+ {
+  "title": "SWCEM",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://public.wmo.int/en/programmes/wmo-space-programme/swcem"
+ },
+ {
+  "title": "Surveys on Satellite Data Use",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Satellite Data Applications",
+  "areaColor": "#4C4BB0",
+  "areaCode": "SAT",
+  "link": "https://community.wmo.int/node/36406"
+ },
+ {
+  "title": "Guide to Instruments and Methods of Observation (GIMO) (WMO-No. 8)",
+  "type": "Manual and Guides",
+  "domain": "All domains",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://library.wmo.int/idurl/4/41650"
+ },
+ {
+  "title": "Manual on the Observation of Clouds and Other Meteors – International Cloud Atlas (WMO-No.407)",
+  "type": "Manual and Guides",
+  "domain": "Weather",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://cloudatlas.wmo.int/en/home.html"
+ },
+ {
+  "title": "Guide to Operational Weather Radar Best Practices (WMO-No. 1257)",
+  "type": "Manual and Guides",
+  "domain": "Weather",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://library.wmo.int/idurl/4/68834"
+ },
+ {
+  "title": "IOM Report Series",
+  "type": "Other types",
+  "domain": "Weather",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://community.wmo.int/node/37839"
+ },
+ {
+  "title": "Generic AWS Tender Specifications",
+  "type": "Other types",
+  "domain": "Weather",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://library.wmo.int/index.php?lvl=notice_display&id=22031"
+ },
+ {
+  "title": "GBON Tender Specifications for AWS",
+  "type": "Other types",
+  "domain": "Weather",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://wmoomm.sharepoint.com/:b:/s/wmocpdb/Ecvr45QvsGZAsQA5FZFcnawBboMp_t4o_wAYFbSjsCXFeQ?e=yDMoD1"
+ },
+ {
+  "title": "GBON Tender Specifications for Upper-Air",
+  "type": "Other types",
+  "domain": "Weather",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://wmoomm.sharepoint.com/sites/wmocpdb/eve_activityarea/Forms/AllItems.aspx"
+ },
+ {
+  "title": "Knowledge Sharing Portal",
+  "type": "Training and Educational materials",
+  "domain": "All domains",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://community.wmo.int/node/37036"
+ },
+ {
+  "title": "IMOP Learning Portal",
+  "type": "Training and Educational materials",
+  "domain": "All domains",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://etrp.wmo.int/course/index.php?categoryid=38"
+ },
+ {
+  "title": "Guidance on Approaches for Traceability Assurance in GBON stations",
+  "type": "Training and Educational materials",
+  "domain": "All domains",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://wmoomm.sharepoint.com/:b:/s/wmocpdb/Ecv9vy-3ipBCuIOyH7rgIRYBjTfUe-27uYyLMf3VHUpYKg?e=uJ7INs"
+ },
+ {
+  "title": "Training Course on Calibration",
+  "type": "Training and Educational materials",
+  "domain": "Weather",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://etrp.wmo.int/course/view.php?id=375"
+ },
+ {
+  "title": "Community of Practice for RICs",
+  "type": "Training and Educational materials",
+  "domain": "All domains",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://etrp.wmo.int/course/view.php?id=417"
+ },
+ {
+  "title": "WIPPS Newsletter",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Data-Processing & Prediction",
+  "areaColor": "#7E3FA0",
+  "areaCode": "DPP",
+  "link": "https://community.wmo.int/en/news/wipps-newsletter"
+ },
+ {
+  "title": "Manual on WIPPS",
+  "type": "Manual and Guides",
+  "domain": "All domains",
+  "area": "Data-Processing & Prediction",
+  "areaColor": "#7E3FA0",
+  "areaCode": "DPP",
+  "link": "https://library.wmo.int/idurl/4/35703"
+ },
+ {
+  "title": "Guide to WIPPS",
+  "type": "Manual and Guides",
+  "domain": "All domains",
+  "area": "Data-Processing & Prediction",
+  "areaColor": "#7E3FA0",
+  "areaCode": "DPP",
+  "link": "https://library.wmo.int/idurl/4/28978"
+ },
+ {
+  "title": "WIPPS Community Site",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Data-Processing & Prediction",
+  "areaColor": "#7E3FA0",
+  "areaCode": "DPP",
+  "link": "https://community.wmo.int/en/activity-areas/wmo-integrated-processing-and-prediction-system-wipps"
+ },
+ {
+  "title": "ERA Community Site",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Data-Processing & Prediction",
+  "areaColor": "#7E3FA0",
+  "areaCode": "DPP",
+  "link": "https://community.wmo.int/node/33030"
+ },
+ {
+  "title": "WIPPS Web Portal",
+  "type": "Training and Educational materials",
+  "domain": "All domains",
+  "area": "Data-Processing & Prediction",
+  "areaColor": "#7E3FA0",
+  "areaCode": "DPP",
+  "link": "https://community.wmo.int/node/37367"
+ },
+ {
+  "title": "WIPPS Webinar",
+  "type": "Training and Educational materials",
+  "domain": "All domains",
+  "area": "Data-Processing & Prediction",
+  "areaColor": "#7E3FA0",
+  "areaCode": "DPP",
+  "link": "https://community.wmo.int/node/33832"
+ },
+ {
+  "title": "WIPPS Pilot Projects",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Data-Processing & Prediction",
+  "areaColor": "#7E3FA0",
+  "areaCode": "DPP",
+  "link": "https://community.wmo.int/node/33836"
+ },
+ {
+  "title": "Implementation Status of WIPPS by Members (WMO Data Collection Campaign 2021)",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Data-Processing & Prediction",
+  "areaColor": "#7E3FA0",
+  "areaCode": "DPP",
+  "link": "https://app.powerbi.com/view?r=eyJrIjoiZWI0NDc1M2YtOGY3OS00Y2Y5LTlkM2UtY2ZmNjI3MWNjNjIyIiwidCI6ImVhYTZiZTU0LTQ2ODctNDBjNC05ODI3LWMwNDRiZDhlOGQzYyIsImMiOjl9"
+ },
+ {
+  "title": "WMO Guidelines on Emerging Data Issues (WMO-No. 1239)",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://library.wmo.int/idurl/4/56904"
+ },
+ {
+  "title": "WMO Guidelines on Emerging Data Issues (WMO-No. 1239)",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Information Management & Technology",
+  "areaColor": "#1E5AA8",
+  "areaCode": "IMT",
+  "link": "https://library.wmo.int/idurl/4/56904"
+ },
+ {
+  "title": "The WMO Unified Data Policy (Resolution 1 (Cg-Ext.(2021)))",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Information Management & Technology",
+  "areaColor": "#1E5AA8",
+  "areaCode": "IMT",
+  "link": "https://library.wmo.int/doc_num.php?explnum_id=11256"
+ },
+ {
+  "title": "Guide to Participation in Radio-Frequency Coordination (WMO-No. 1159)",
+  "type": "Manual and Guides",
+  "domain": "All domains",
+  "area": "Radio Frequency Coordination",
+  "areaColor": "#C0335F",
+  "areaCode": "RFC",
+  "link": "https://library.wmo.int/idurl/4/54853"
+ },
+ {
+  "title": "ITU/WMO Handbook on Use of Radio Spectrum for Meteorology: Weather, Water and Climate Monitoring and Prediction (WMO-No. 1197)",
+  "type": "Other types",
+  "domain": "All domains",
+  "area": "Radio Frequency Coordination",
+  "areaColor": "#C0335F",
+  "areaCode": "RFC",
+  "link": "https://library.wmo.int/idurl/4/55658"
+ },
+ {
+  "title": "National Focal Points for Radio Frequency matters",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Radio Frequency Coordination",
+  "areaColor": "#C0335F",
+  "areaCode": "RFC",
+  "link": "https://community.wmo.int/node/33376"
+ },
+ {
+  "title": "Expert Team on Radio Frequency Coordination (ET-RFC)",
+  "type": "Outreach and communication materials",
+  "domain": "All domains",
+  "area": "Radio Frequency Coordination",
+  "areaColor": "#C0335F",
+  "areaCode": "RFC",
+  "link": "https://community.wmo.int/node/33244"
+ },
+ {
+  "title": "Guide to Hydrological Practices, Volume I: From Measurement to Hydrological Information (WMO-No.168)",
+  "type": "Manual and Guides",
+  "domain": "Hydrology",
+  "area": "Earth Observing Systems & Networks",
+  "areaColor": "#0E8A6B",
+  "areaCode": "EOS",
+  "link": "https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/water-resources-assessment/hydrology-publications"
+ },
+ {
+  "title": "Guide to Hydrological Practices, Volume I: From Measurement to Hydrological Information (WMO-No.168)",
+  "type": "Manual and Guides",
+  "domain": "Hydrology",
+  "area": "Measurements, Instrumentation & Traceability",
+  "areaColor": "#C77D0A",
+  "areaCode": "MIT",
+  "link": "https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/water-resources-assessment/hydrology-publications"
+ },
+ {
+  "title": "Guide to Hydrological Practices, Volume I: From Measurement to Hydrological Information (WMO-No.168)",
+  "type": "Manual and Guides",
+  "domain": "Hydrology",
+  "area": "Information Management & Technology",
+  "areaColor": "#1E5AA8",
+  "areaCode": "IMT",
+  "link": "https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/water-resources-assessment/hydrology-publications"
+ }
+]

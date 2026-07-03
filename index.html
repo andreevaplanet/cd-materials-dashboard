@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INFCOM Capacity Development Materials Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wmo-blue:#204e96;
+  --wmo-blue-dark:#183b73;
+  --ink:#10233f;
+  --muted:#5b6472;
+  --paper:#eef2f9;
+  --surface:#ffffff;
+  --line:#e0e6f0;
+  --line-strong:#c9d3e4;
+  --focus:#1E5AA8;
+  /* thematic-area spectrum */
+  --a-mit:#C77D0A; --a-eos:#0E8A6B; --a-imt:#1E5AA8;
+  --a-sat:#4C4BB0; --a-dpp:#7E3FA0; --a-rfc:#C0335F;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(16,35,63,.05), 0 8px 24px -12px rgba(16,35,63,.18);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Public Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--wmo-blue)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* ---------- Masthead ---------- */
+.masthead{background:var(--wmo-blue);color:#fff}
+.masthead .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.masthead__logo{height:34px;width:auto;display:block}
+.masthead__crumb{font-size:.82rem;letter-spacing:.02em;color:#cfe0ff;font-weight:500}
+.masthead__crumb b{color:#fff;font-weight:600}
+.masthead__link{margin-left:auto;font-size:.82rem;color:#cfe0ff;text-decoration:none;
+  border:1px solid rgba(255,255,255,.35);padding:6px 12px;border-radius:20px;transition:background .15s,border-color .15s}
+.masthead__link:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.6)}
+
+/* spectrum rule = the signature */
+.spectrum{display:flex;height:5px}
+.spectrum span{flex:1}
+
+/* ---------- Title block ---------- */
+.hero{background:linear-gradient(180deg,#f7f9fd 0%,var(--paper) 100%);border-bottom:1px solid var(--line)}
+.hero .wrap{padding-top:34px;padding-bottom:26px}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--wmo-blue)}
+h1{font-family:"Archivo",sans-serif;font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(1.7rem,4.2vw,2.7rem);line-height:1.05;margin:.35rem 0 .5rem}
+.hero p.lede{margin:0;max-width:60ch;color:var(--muted);font-size:1.02rem}
+
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:12px 16px;min-width:118px;box-shadow:var(--shadow)}
+.stat b{font-family:"Archivo",sans-serif;font-size:1.5rem;font-weight:800;display:block;line-height:1;color:var(--ink)}
+.stat span{font-size:.76rem;color:var(--muted);letter-spacing:.02em}
+
+/* ---------- Controls ---------- */
+.controls{position:sticky;top:0;z-index:30;background:rgba(238,242,249,.92);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 0}
+.searchrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search{position:relative;flex:1;min-width:240px}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted)}
+.search input{width:100%;padding:12px 14px 12px 42px;border:1px solid var(--line-strong);
+  border-radius:12px;font-size:1rem;font-family:inherit;background:var(--surface);color:var(--ink)}
+.search input::placeholder{color:#8a93a5}
+.search input:focus{outline:none;border-color:var(--focus);box-shadow:0 0 0 3px rgba(30,90,168,.18)}
+.sortsel{position:relative}
+.sortsel select{appearance:none;-webkit-appearance:none;padding:12px 38px 12px 14px;border:1px solid var(--line-strong);
+  border-radius:12px;background:var(--surface);font-family:inherit;font-size:.92rem;color:var(--ink);cursor:pointer}
+.sortsel select:focus{outline:none;border-color:var(--focus);box-shadow:0 0 0 3px rgba(30,90,168,.18)}
+.sortsel::after{content:"";position:absolute;right:14px;top:50%;width:8px;height:8px;pointer-events:none;
+  border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg)}
+.viewtoggle{display:inline-flex;border:1px solid var(--line-strong);border-radius:12px;overflow:hidden;background:var(--surface)}
+.viewtoggle button{border:0;background:transparent;padding:11px 14px;font-family:inherit;font-size:.86rem;
+  color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px}
+.viewtoggle button.on{background:var(--wmo-blue);color:#fff}
+.viewtoggle button:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+
+/* area pills */
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.pill{--c:var(--wmo-blue);display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);font-family:inherit;
+  font-size:.84rem;font-weight:500;cursor:pointer;transition:background .13s,border-color .13s,color .13s}
+.pill .dot{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none}
+.pill .ct{color:var(--muted);font-variant-numeric:tabular-nums;font-size:.78rem}
+.pill:hover{border-color:var(--c)}
+.pill.on{background:var(--c);border-color:var(--c);color:#fff}
+.pill.on .dot{background:#fff}
+.pill.on .ct{color:rgba(255,255,255,.85)}
+.pill:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* more filters */
+.morebar{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.moretoggle{background:none;border:0;font-family:inherit;font-size:.86rem;font-weight:600;color:var(--wmo-blue);
+  cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:4px 0}
+.moretoggle .chev{width:7px;height:7px;border-right:2px solid var(--wmo-blue);border-bottom:2px solid var(--wmo-blue);
+  transform:rotate(45deg);transition:transform .2s}
+.moretoggle[aria-expanded="true"] .chev{transform:rotate(225deg)}
+.resultline{margin-left:auto;font-size:.86rem;color:var(--muted)}
+.resultline b{color:var(--ink);font-variant-numeric:tabular-nums}
+.clearall{background:none;border:0;color:var(--wmo-blue);font-family:inherit;font-size:.86rem;font-weight:600;
+  cursor:pointer;padding:4px 0;margin-left:14px}
+.clearall[hidden]{display:none}
+
+.morepanel{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:14px;
+  padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.morepanel[hidden]{display:none}
+.fgroup h4{margin:0 0 9px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:8px;border:1px solid var(--line-strong);
+  background:#fbfcfe;font-family:inherit;font-size:.82rem;color:var(--ink);cursor:pointer}
+.chip .ct{color:var(--muted);font-size:.74rem;font-variant-numeric:tabular-nums}
+.chip:hover{border-color:var(--wmo-blue)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip.on .ct{color:rgba(255,255,255,.8)}
+.chip:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+/* ---------- Results ---------- */
+main{padding:26px 0 60px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));gap:16px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 18px 16px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:var(--radius) 0 0 var(--radius);
+  background:var(--c,var(--wmo-blue))}
+.card:hover{transform:translateY(-3px);box-shadow:0 4px 8px rgba(16,35,63,.08),0 18px 40px -18px rgba(16,35,63,.4);
+  border-color:var(--line-strong)}
+.card__top{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.areacode{font-family:"Archivo",sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.06em;
+  color:var(--c,var(--wmo-blue));text-transform:uppercase}
+.areadot{width:8px;height:8px;border-radius:50%;background:var(--c,var(--wmo-blue))}
+.typetag{margin-left:auto;font-size:.68rem;font-weight:600;color:var(--muted);background:#f1f4f9;
+  border-radius:6px;padding:3px 8px;letter-spacing:.01em}
+.card h3{font-family:"Public Sans",sans-serif;font-size:1.02rem;font-weight:700;line-height:1.28;
+  margin:0 0 10px;color:var(--ink)}
+.card h3 .wmno{color:var(--muted);font-weight:500;font-size:.86em}
+.metarow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tag{font-size:.72rem;color:var(--muted);background:#f4f6fb;border:1px solid var(--line);
+  border-radius:20px;padding:3px 9px}
+.tag.dom{color:var(--wmo-blue-dark);background:#eaf0fb;border-color:#d6e2f6}
+.card__foot{margin-top:auto;display:flex;align-items:center}
+.open{display:inline-flex;align-items:center;gap:6px;font-size:.86rem;font-weight:600;color:var(--wmo-blue);
+  text-decoration:none;padding:6px 0}
+.open svg{width:14px;height:14px}
+.open:hover{color:var(--wmo-blue-dark);text-decoration:underline}
+.nolink{font-size:.78rem;color:#9aa3b3;font-style:italic}
+
+/* grouped view */
+.areasection{margin-bottom:34px}
+.areasection__head{display:flex;align-items:center;gap:11px;margin:0 0 14px;padding-bottom:11px;
+  border-bottom:2px solid var(--c)}
+.areasection__head .bar{width:14px;height:14px;border-radius:4px;background:var(--c)}
+.areasection__head h2{font-family:"Archivo",sans-serif;font-size:1.18rem;font-weight:700;margin:0;color:var(--ink)}
+.areasection__head .n{margin-left:auto;font-size:.82rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* empty */
+.empty{text-align:center;padding:70px 20px;color:var(--muted)}
+.empty svg{width:44px;height:44px;color:var(--line-strong);margin-bottom:14px}
+.empty h3{font-family:"Archivo";color:var(--ink);margin:0 0 6px;font-size:1.2rem}
+.empty button{margin-top:16px;background:var(--wmo-blue);color:#fff;border:0;border-radius:10px;
+  padding:11px 20px;font-family:inherit;font-weight:600;cursor:pointer;font-size:.9rem}
+
+/* footer */
+footer{background:var(--wmo-blue-dark);color:#cfe0ff;padding:26px 0;font-size:.82rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+footer a{color:#fff}
+footer .note{max-width:62ch;line-height:1.5}
+
+@media(max-width:760px){
+  .morepanel{grid-template-columns:1fr}
+  .resultline{margin-left:0;width:100%;order:5}
+  .card{padding-left:20px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.card.enter{animation:pop .32s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <img class="masthead__logo" src="https://community.wmo.int/themes/custom/server_theme/dist/images/logo_en.svg" alt="World Meteorological Organization" onerror="this.style.display='none'">
+    <span class="masthead__crumb">Knowledge Hub · <b>Capacity Development Panel</b></span>
+    <a class="masthead__link" href="https://community.wmo.int/" target="_blank" rel="noopener">community.wmo.int ↗</a>
+  </div>
+</header>
+<div class="spectrum" aria-hidden="true">
+  <span style="background:var(--a-imt)"></span><span style="background:var(--a-eos)"></span>
+  <span style="background:var(--a-mit)"></span><span style="background:var(--a-sat)"></span>
+  <span style="background:var(--a-dpp)"></span><span style="background:var(--a-rfc)"></span>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">INFCOM · Capacity Development</div>
+    <h1>Capacity Development Materials</h1>
+    <p class="lede">A searchable catalogue of WMO manuals, guides, newsletters, training resources and portals supporting National Meteorological and Hydrological Services. Filter by thematic area, material type or Earth-system domain.</p>
+    <div class="stats" id="stats"></div>
+  </div>
+</section>
+
+<section class="controls">
+  <div class="wrap">
+    <div class="searchrow">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="search" type="search" placeholder="Search materials by title, area or type…" aria-label="Search materials">
+      </div>
+      <div class="sortsel">
+        <select id="sort" aria-label="Sort materials">
+          <option value="area">Sort: by thematic area</option>
+          <option value="az">Sort: title A–Z</option>
+          <option value="za">Sort: title Z–A</option>
+          <option value="type">Sort: by material type</option>
+        </select>
+      </div>
+      <div class="viewtoggle" role="tablist" aria-label="View mode">
+        <button id="vgrid" role="tab" aria-selected="false">Grid</button>
+        <button id="varea" class="on" role="tab" aria-selected="true">By area</button>
+      </div>
+    </div>
+
+    <div class="pills" id="areapills"></div>
+
+    <div class="morebar">
+      <button class="moretoggle" id="moretoggle" aria-expanded="false" aria-controls="morepanel">
+        <span class="chev"></span> More filters
+      </button>
+      <span class="resultline"><b id="rcount">0</b> materials shown</span>
+      <button class="clearall" id="clearall" hidden>Clear all filters</button>
+    </div>
+
+    <div class="morepanel" id="morepanel" hidden>
+      <div class="fgroup"><h4>Material type</h4><div class="chips" id="typechips"></div></div>
+      <div class="fgroup"><h4>Earth-system domain</h4><div class="chips" id="domchips"></div></div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <div id="results"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="note">Data source: INFCOM Capacity Development Materials classification. Links resolve to the WMO e-Library, WMO Community and partner platforms. One item (Aircraft-based Observations Metadata Repository Manual) has no public link yet. <span id="datanote" style="opacity:.7"></span></p>
+    <a href="https://community.wmo.int/site/knowledge-hub/governance/executive-council/capacity-development-panel" target="_blank" rel="noopener">Capacity Development Panel ↗</a>
+  </div>
+</footer>
+
+<script>
+// Bundled snapshot — used as an offline fallback if no live data file is found.
+const EMBEDDED = [{"title": "WIS Newsletter", "type": "Outreach and communication materials", "domain": "All domains", "area": "Information Management & Technology", "areaColor": "#1E5AA8", "areaCode": "IMT", "audiences": ["All Audiences"], "link": "https://community.wmo.int/node/33669"}, {"title": "Operational Newsletter", "type": "Outreach and communication materials", "domain": "All domains", "area": "Information Management & Technology", "areaColor": "#1E5AA8", "areaCode": "IMT", "audiences": ["All Audiences"], "link": "https://community.wmo.int/node/33765"}, {"title": "WIS Manuals", "type": "Manual and Guides", "domain": "All domains", "area": "Information Management & Technology", "areaColor": "#1E5AA8", "areaCode": "IMT", "audiences": ["Practitioners", "Researchers"], "link": "https://library.wmo.int/index.php?lvl=notice_display&id=9254"}, {"title": "Guide to WIS", "type": "Manual and Guides", "domain": "All domains", "area": "Information Management & Technology", "areaColor": "#1E5AA8", "areaCode": "IMT", "audiences": ["Practitioners", "Trainers"], "link": "https://library.wmo.int/idurl/4/28988"}, {"title": "WIS2 in a Box", "type": "Training and Educational materials", "domain": "All domains", "area": "Information Management & Technology", "areaColor": "#1E5AA8", "areaCode": "IMT", "audiences": ["Practitioners", "Trainers"], "link": "https://docs.wis2box.wis.wmo.int/en/latest/"}, {"title": "WIS2 Training", "type": "Training and Educational materials", "domain": "All domains", "area": "Information Management & Technology", "areaColor": "#1E5AA8", "areaCode": "IMT", "audiences": [], "link": "https://community.wmo.int/node/37819"}, {"title": "WIGOS Newsletters", "type": "Outreach and communication materials", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["All Audiences"], "link": "https://community.wmo.int/node/33511"}, {"title": "Aircraft based Observation and AMDAR Newsletters", "type": "Outreach and communication materials", "domain": "Weather", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Practitioners", "Researchers"], "link": "https://community.wmo.int/node/37133"}, {"title": "WIGOS Manual", "type": "Manual and Guides", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Practitioners"], "link": "https://library.wmo.int/?lvl=notice_display&id=19223"}, {"title": "Guide to WIGOS", "type": "Manual and Guides", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Practitioners", "Trainers"], "link": "https://library.wmo.int/index.php?lvl=notice_display&id=20026"}, {"title": "WIGOS Metadata Standard", "type": "Manual and Guides", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Practitioners"], "link": "https://library.wmo.int/index.php?lvl=more_results&mode=extended"}, {"title": "Technical Guidelines for RWC on WDQMS (WMO-No. 1224)", "type": "Other types", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Practitioners"], "link": "https://library.wmo.int/idurl/4/56347"}, {"title": "High-level Guidance on Evolution of Global Observing Systems 2023–2027 (WMO-No. 1334)", "type": "Other types", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Decision-makers", "Managers"], "link": "https://library.wmo.int/idurl/4/68862"}, {"title": "Aircraft-based Observations Metadata Repository Manual", "type": "Manual and Guides", "domain": "Weather", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Practitioners"], "link": ""}, {"title": "WIGOS Technical Reports", "type": "Other types", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Researchers"], "link": "https://community.wmo.int/activity-areas/WIGOS/Technical%20reports"}, {"title": "OSCAR/Surface User Manual", "type": "Other types", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Practitioners", "Trainers"], "link": "https://library.wmo.int/idurl/4/56451"}, {"title": "WDQMS User Guide", "type": "Other types", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Practitioners"], "link": "https://confluence.ecmwf.int/display/WIGOSWT/User+Guide"}, {"title": "User Manual on the Incident Management System (IMS-RWC)", "type": "Other types", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Practitioners"], "link": "https://library.wmo.int/idurl/4/57436"}, {"title": "WIGOS Learning Portal", "type": "Training and Educational materials", "domain": "All domains", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": ["Trainers", "Students", "Practitioners"], "link": "https://etrp.wmo.int/course/view.php?id=146"}, {"title": "RA II WIGOS Newsletters", "type": "Outreach and communication materials", "domain": "Weather", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["All Audiences"], "link": "https://www.jma.go.jp/jma/jma-eng/satellite/ra2wigosproject/ra2wigosnewsletter.html"}, {"title": "Space-based Weather and Climate Extremes Monitoring (SWCEM) Newsletters", "type": "Outreach and communication materials", "domain": "Weather", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Practitioners", "Researchers"], "link": "https://public.wmo.int/en/programmes/wmo-space-programme/swcem"}, {"title": "Space-based Weather and Climate Extremes Monitoring (SWCEM) Newsletters", "type": "Outreach and communication materials", "domain": "Climate", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Practitioners", "Researchers"], "link": "https://public.wmo.int/en/programmes/wmo-space-programme/swcem"}, {"title": "DBNet Newsletter", "type": "Outreach and communication materials", "domain": "All domains", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["All Audiences"], "link": "https://community.wmo.int/node/37663"}, {"title": "Guide to the Direct Broadcast Network for Near-real-time Relay of Low Earth Orbit Satellite Data (WMO-No. 1185)", "type": "Manual and Guides", "domain": "All domains", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Practitioners"], "link": "https://library.wmo.int/idurl/4/55778"}, {"title": "Guidelines on Best Practices for User Readiness for New Meteorological Satellite (WMO-No. 1187)", "type": "Other types", "domain": "Weather", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Practitioners", "Trainers"], "link": "https://library.wmo.int/idurl/4/55542"}, {"title": "Guidelines on Satellite Skills and Knowledge for Operational Meteorologists (SP-12)", "type": "Other types", "domain": "Weather", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Trainers", "Practitioners"], "link": "https://library.wmo.int/?lvl=notice_display&id=19843"}, {"title": "Guidelines for Satellite-based Nowcasting in Africa (WMO-No. 1309)", "type": "Other types", "domain": "Weather", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Practitioners"], "link": "https://library.wmo.int/idurl/4/58348"}, {"title": "OSCAR/Space", "type": "Outreach and communication materials", "domain": "All domains", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Practitioners", "Researchers"], "link": "https://space.oscar.wmo.int/spacecapabilities"}, {"title": "WMO-CGMS VLab", "type": "Outreach and communication materials", "domain": "All domains", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Trainers", "Students"], "link": "https://www.wmo-sat.info/vlab/"}, {"title": "Coordination Group on Satellite Data Requirements (RA III-IV-SDR Group)", "type": "Outreach and communication materials", "domain": "All domains", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Practitioners", "Decision-makers"], "link": "https://sdr.ucr.ac.cr/"}, {"title": "RA I Dissemination Expert Group", "type": "Outreach and communication materials", "domain": "All domains", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Practitioners"], "link": "https://community.wmo.int/node/36413"}, {"title": "RA II WIGOS Project", "type": "Outreach and communication materials", "domain": "Weather", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Practitioners"], "link": "https://www.jma.go.jp/jma/jma-eng/satellite/ra2wigosproject/ra2wigosproject-intro_en_jma.html"}, {"title": "SWCEM", "type": "Other types", "domain": "All domains", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Researchers"], "link": "https://public.wmo.int/en/programmes/wmo-space-programme/swcem"}, {"title": "Surveys on Satellite Data Use", "type": "Outreach and communication materials", "domain": "All domains", "area": "Satellite Data Applications", "areaColor": "#4C4BB0", "areaCode": "SAT", "audiences": ["Practitioners", "Researchers"], "link": "https://community.wmo.int/node/36406"}, {"title": "Guide to Instruments and Methods of Observation (GIMO) (WMO-No. 8)", "type": "Manual and Guides", "domain": "All domains", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Practitioners", "Trainers"], "link": "https://library.wmo.int/idurl/4/41650"}, {"title": "Manual on the Observation of Clouds and Other Meteors – International Cloud Atlas (WMO-No.407)", "type": "Manual and Guides", "domain": "Weather", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Practitioners", "Trainers"], "link": "https://cloudatlas.wmo.int/en/home.html"}, {"title": "Guide to Operational Weather Radar Best Practices (WMO-No. 1257)", "type": "Manual and Guides", "domain": "Weather", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Practitioners"], "link": "https://library.wmo.int/idurl/4/68834"}, {"title": "IOM Report Series", "type": "Other types", "domain": "Weather", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Researchers"], "link": "https://community.wmo.int/node/37839"}, {"title": "Generic AWS Tender Specifications", "type": "Other types", "domain": "Weather", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Practitioners"], "link": "https://library.wmo.int/index.php?lvl=notice_display&id=22031"}, {"title": "GBON Tender Specifications for AWS", "type": "Other types", "domain": "Weather", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Practitioners"], "link": "https://wmoomm.sharepoint.com/:b:/s/wmocpdb/Ecvr45QvsGZAsQA5FZFcnawBboMp_t4o_wAYFbSjsCXFeQ?e=yDMoD1"}, {"title": "GBON Tender Specifications for Upper-Air", "type": "Other types", "domain": "Weather", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Practitioners"], "link": "https://wmoomm.sharepoint.com/sites/wmocpdb/eve_activityarea/Forms/AllItems.aspx"}, {"title": "Knowledge Sharing Portal", "type": "Training and Educational materials", "domain": "All domains", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Trainers", "Practitioners"], "link": "https://community.wmo.int/node/37036"}, {"title": "IMOP Learning Portal", "type": "Training and Educational materials", "domain": "All domains", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Trainers", "Students"], "link": "https://etrp.wmo.int/course/index.php?categoryid=38"}, {"title": "Guidance on Approaches for Traceability Assurance in GBON stations", "type": "Training and Educational materials", "domain": "All domains", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Practitioners"], "link": "https://wmoomm.sharepoint.com/:b:/s/wmocpdb/Ecv9vy-3ipBCuIOyH7rgIRYBjTfUe-27uYyLMf3VHUpYKg?e=uJ7INs"}, {"title": "Training Course on Calibration", "type": "Training and Educational materials", "domain": "Weather", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": [], "link": "https://etrp.wmo.int/course/view.php?id=375"}, {"title": "Community of Practice for RICs", "type": "Training and Educational materials", "domain": "All domains", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": [], "link": "https://etrp.wmo.int/course/view.php?id=417"}, {"title": "WIPPS Newsletter", "type": "Outreach and communication materials", "domain": "All domains", "area": "Data-Processing & Prediction", "areaColor": "#7E3FA0", "areaCode": "DPP", "audiences": ["Practitioners", "Researchers"], "link": "https://community.wmo.int/en/news/wipps-newsletter"}, {"title": "Manual on WIPPS", "type": "Manual and Guides", "domain": "All domains", "area": "Data-Processing & Prediction", "areaColor": "#7E3FA0", "areaCode": "DPP", "audiences": ["Practitioners"], "link": "https://library.wmo.int/idurl/4/35703"}, {"title": "Guide to WIPPS", "type": "Manual and Guides", "domain": "All domains", "area": "Data-Processing & Prediction", "areaColor": "#7E3FA0", "areaCode": "DPP", "audiences": ["Practitioners", "Trainers"], "link": "https://library.wmo.int/idurl/4/28978"}, {"title": "WIPPS Community Site", "type": "Other types", "domain": "All domains", "area": "Data-Processing & Prediction", "areaColor": "#7E3FA0", "areaCode": "DPP", "audiences": ["Practitioners", "Researchers"], "link": "https://community.wmo.int/en/activity-areas/wmo-integrated-processing-and-prediction-system-wipps"}, {"title": "ERA Community Site", "type": "Other types", "domain": "All domains", "area": "Data-Processing & Prediction", "areaColor": "#7E3FA0", "areaCode": "DPP", "audiences": ["Researchers"], "link": "https://community.wmo.int/node/33030"}, {"title": "WIPPS Web Portal", "type": "Training and Educational materials", "domain": "All domains", "area": "Data-Processing & Prediction", "areaColor": "#7E3FA0", "areaCode": "DPP", "audiences": ["Practitioners"], "link": "https://community.wmo.int/node/37367"}, {"title": "WIPPS Webinar", "type": "Training and Educational materials", "domain": "All domains", "area": "Data-Processing & Prediction", "areaColor": "#7E3FA0", "areaCode": "DPP", "audiences": ["Practitioners", "Trainers"], "link": "https://community.wmo.int/node/33832"}, {"title": "WIPPS Pilot Projects", "type": "Outreach and communication materials", "domain": "All domains", "area": "Data-Processing & Prediction", "areaColor": "#7E3FA0", "areaCode": "DPP", "audiences": ["Researchers"], "link": "https://community.wmo.int/node/33836"}, {"title": "Implementation Status of WIPPS by Members (WMO Data Collection Campaign 2021)", "type": "Outreach and communication materials", "domain": "All domains", "area": "Data-Processing & Prediction", "areaColor": "#7E3FA0", "areaCode": "DPP", "audiences": ["Decision-makers"], "link": "https://app.powerbi.com/view?r=eyJrIjoiZWI0NDc1M2YtOGY3OS00Y2Y5LTlkM2UtY2ZmNjI3MWNjNjIyIiwidCI6ImVhYTZiZTU0LTQ2ODctNDBjNC05ODI3LWMwNDRiZDhlOGQzYyIsImMiOjl9"}, {"title": "WMO Guidelines on Emerging Data Issues (WMO-No. 1239)", "type": "Other types", "domain": "All domains", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": ["Decision-makers"], "link": "https://library.wmo.int/idurl/4/56904"}, {"title": "WMO Guidelines on Emerging Data Issues (WMO-No. 1239)", "type": "Other types", "domain": "All domains", "area": "Information Management & Technology", "areaColor": "#1E5AA8", "areaCode": "IMT", "audiences": ["Decision-makers"], "link": "https://library.wmo.int/idurl/4/56904"}, {"title": "The WMO Unified Data Policy (Resolution 1 (Cg-Ext.(2021)))", "type": "Other types", "domain": "All domains", "area": "Information Management & Technology", "areaColor": "#1E5AA8", "areaCode": "IMT", "audiences": [], "link": "https://library.wmo.int/doc_num.php?explnum_id=11256"}, {"title": "Guide to Participation in Radio-Frequency Coordination (WMO-No. 1159)", "type": "Manual and Guides", "domain": "All domains", "area": "Radio Frequency Coordination", "areaColor": "#C0335F", "areaCode": "RFC", "audiences": ["Practitioners"], "link": "https://library.wmo.int/idurl/4/54853"}, {"title": "ITU/WMO Handbook on Use of Radio Spectrum for Meteorology: Weather, Water and Climate Monitoring and Prediction (WMO-No. 1197)", "type": "Other types", "domain": "All domains", "area": "Radio Frequency Coordination", "areaColor": "#C0335F", "areaCode": "RFC", "audiences": ["Practitioners", "Decision-makers"], "link": "https://library.wmo.int/idurl/4/55658"}, {"title": "National Focal Points for Radio Frequency matters", "type": "Outreach and communication materials", "domain": "All domains", "area": "Radio Frequency Coordination", "areaColor": "#C0335F", "areaCode": "RFC", "audiences": ["Practitioners", "Managers"], "link": "https://community.wmo.int/node/33376"}, {"title": "Expert Team on Radio Frequency Coordination (ET-RFC)", "type": "Outreach and communication materials", "domain": "All domains", "area": "Radio Frequency Coordination", "areaColor": "#C0335F", "areaCode": "RFC", "audiences": ["Practitioners", "Decision-makers"], "link": "https://community.wmo.int/node/33244"}, {"title": "Guide to Hydrological Practices, Volume I: From Measurement to Hydrological Information (WMO-No.168)", "type": "Manual and Guides", "domain": "Hydrology", "area": "Earth Observing Systems & Networks", "areaColor": "#0E8A6B", "areaCode": "EOS", "audiences": [], "link": "https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/water-resources-assessment/hydrology-publications"}, {"title": "Guide to Hydrological Practices, Volume I: From Measurement to Hydrological Information (WMO-No.168)", "type": "Manual and Guides", "domain": "Hydrology", "area": "Measurements, Instrumentation & Traceability", "areaColor": "#C77D0A", "areaCode": "MIT", "audiences": [], "link": "https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/water-resources-assessment/hydrology-publications"}, {"title": "Guide to Hydrological Practices, Volume I: From Measurement to Hydrological Information (WMO-No.168)", "type": "Manual and Guides", "domain": "Hydrology", "area": "Information Management & Technology", "areaColor": "#1E5AA8", "areaCode": "IMT", "audiences": [], "link": "https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/water-resources-assessment/hydrology-publications"}];
+let MATERIALS = EMBEDDED;
+const AREA_ORDER = ["Information Management & Technology","Earth Observing Systems & Networks","Measurements, Instrumentation & Traceability","Satellite Data Applications","Data-Processing & Prediction","Radio Frequency Coordination"];
+const CSSVAR = {"Information Management & Technology":"--a-imt","Earth Observing Systems & Networks":"--a-eos","Measurements, Instrumentation & Traceability":"--a-mit","Satellite Data Applications":"--a-sat","Data-Processing & Prediction":"--a-dpp","Radio Frequency Coordination":"--a-rfc"};
+
+const state={q:"",areas:new Set(),types:new Set(),doms:new Set(),sort:"area",view:"area"};
+
+const uniq=(arr)=>[...new Set(arr)];
+let TYPES=[], DOMS=[];
+function computeFacets(){
+  TYPES=uniq(MATERIALS.map(m=>m.type)).sort();
+  DOMS=uniq(MATERIALS.map(m=>m.domain)).sort((a,b)=>a==="All domains"?-1:b==="All domains"?1:a.localeCompare(b));
+}
+
+const $=s=>document.querySelector(s);
+const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e;};
+const count=(pred)=>MATERIALS.filter(pred).length;
+
+// split "Title (WMO-No. 168)" so the number can be dimmed
+function titleParts(t){
+  const m=t.match(/^(.*?)(\s*\((?:WMO-No\.|SP-|Resolution|RA |WMO Data).*?\))\s*$/);
+  if(m) return [m[1].trim(), m[2].trim()];
+  return [t,""];
+}
+
+// ---- Stats ----
+function renderStats(){
+  const areaCount=AREA_ORDER.filter(a=>MATERIALS.some(m=>m.area===a)).length;
+  const items=[
+    [MATERIALS.length,"materials catalogued"],
+    [areaCount,"thematic areas"],
+    [TYPES.length,"material types"]
+  ];
+  const c=$("#stats");
+  items.forEach(([n,l])=>{const s=el("div","stat");s.append(el("b",null,String(n)),el("span",null,l));c.append(s);});
+}
+
+// ---- Filter builders ----
+function buildPills(){
+  const c=$("#areapills");
+  AREA_ORDER.forEach(a=>{
+    const b=el("button","pill");b.style.setProperty("--c",`var(${CSSVAR[a]})`);
+    b.setAttribute("aria-pressed","false");
+    b.innerHTML=`<span class="dot"></span>${a}<span class="ct">${count(m=>m.area===a)}</span>`;
+    b.onclick=()=>{toggle(state.areas,a);b.classList.toggle("on");b.setAttribute("aria-pressed",state.areas.has(a));render();};
+    c.append(b);
+  });
+}
+function buildChips(container,values,set){
+  const c=$(container);
+  values.forEach(v=>{
+    const b=el("button","chip");b.setAttribute("aria-pressed","false");
+    b.innerHTML=`${v}<span class="ct">${set==="types"?count(m=>m.type===v):count(m=>m.domain===v)}</span>`;
+    b.onclick=()=>{const S=set==="types"?state.types:state.doms;toggle(S,v);b.classList.toggle("on");b.setAttribute("aria-pressed",S.has(v));render();};
+    c.append(b);
+  });
+}
+function toggle(set,v){set.has(v)?set.delete(v):set.add(v);}
+
+// ---- Filtering ----
+function filtered(){
+  const q=state.q.trim().toLowerCase();
+  let list=MATERIALS.filter(m=>{
+    if(q && !(m.title.toLowerCase().includes(q)||m.area.toLowerCase().includes(q)||m.type.toLowerCase().includes(q))) return false;
+    if(state.areas.size && !state.areas.has(m.area)) return false;
+    if(state.types.size && !state.types.has(m.type)) return false;
+    if(state.doms.size && !state.doms.has(m.domain)) return false;
+    return true;
+  });
+  const s=state.sort;
+  if(s==="az")list.sort((a,b)=>a.title.localeCompare(b.title));
+  else if(s==="za")list.sort((a,b)=>b.title.localeCompare(a.title));
+  else if(s==="type")list.sort((a,b)=>a.type.localeCompare(b.type)||a.title.localeCompare(b.title));
+  else list.sort((a,b)=>AREA_ORDER.indexOf(a.area)-AREA_ORDER.indexOf(b.area)||a.title.localeCompare(b.title));
+  return list;
+}
+
+function cardHTML(m,i){
+  const [t,no]=titleParts(m.title);
+  const cv=`var(${CSSVAR[m.area]})`;
+  const doms=m.domain&&m.domain!=="All domains"?`<span class="tag dom">${m.domain}</span>`:`<span class="tag dom">All domains</span>`;
+  const foot=m.link?`<a class="open" href="${m.link}" target="_blank" rel="noopener">Open resource <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>`:`<span class="nolink">Link not yet available</span>`;
+  const c=el("article","card enter");c.style.setProperty("--c",cv);c.style.animationDelay=Math.min(i*14,260)+"ms";
+  c.innerHTML=`<div class="card__top"><span class="areadot"></span><span class="areacode">${m.areaCode}</span><span class="typetag">${shortType(m.type)}</span></div>
+    <h3>${t}${no?` <span class="wmno">${no}</span>`:""}</h3>
+    <div class="metarow">${doms}</div>
+    <div class="card__foot">${foot}</div>`;
+  return c;
+}
+function shortType(t){return t.replace("Outreach and communication materials","Outreach & communication").replace("Training and Educational materials","Training & education").replace("Manual and Guides","Manual / guide").replace("Other types","Other");}
+
+function render(){
+  const list=filtered();
+  $("#rcount").textContent=list.length;
+  const anyFilter=state.q||state.areas.size||state.types.size||state.doms.size;
+  $("#clearall").hidden=!anyFilter;
+  const R=$("#results");R.innerHTML="";
+  if(!list.length){
+    R.innerHTML=`<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><h3>No materials match those filters</h3><p>Try removing a filter or clearing your search.</p><button id="ec">Clear all filters</button></div>`;
+    $("#ec").onclick=clearAll;return;
+  }
+  if(state.view==="grid"){
+    const g=el("div","grid");list.forEach((m,i)=>g.append(cardHTML(m,i)));R.append(g);
+  }else{
+    const byArea={};list.forEach(m=>{(byArea[m.area]=byArea[m.area]||[]).push(m);});
+    AREA_ORDER.filter(a=>byArea[a]).forEach(a=>{
+      const sec=el("section","areasection");sec.style.setProperty("--c",`var(${CSSVAR[a]})`);
+      const h=el("div","areasection__head");
+      h.innerHTML=`<span class="bar"></span><h2>${a}</h2><span class="n">${byArea[a].length} materials</span>`;
+      const g=el("div","grid");byArea[a].forEach((m,i)=>g.append(cardHTML(m,i)));
+      sec.append(h,g);R.append(sec);
+    });
+  }
+}
+
+function clearAll(){
+  state.q="";state.areas.clear();state.types.clear();state.doms.clear();
+  $("#search").value="";
+  document.querySelectorAll(".pill.on,.chip.on").forEach(b=>{b.classList.remove("on");b.setAttribute("aria-pressed","false");});
+  render();
+}
+
+// ---- wire up ----
+let t;$("#search").addEventListener("input",e=>{clearTimeout(t);t=setTimeout(()=>{state.q=e.target.value;render();},110);});
+$("#sort").addEventListener("change",e=>{state.sort=e.target.value;render();});
+$("#clearall").onclick=clearAll;
+$("#moretoggle").onclick=function(){const p=$("#morepanel");const open=p.hidden;p.hidden=!open;this.setAttribute("aria-expanded",open);};
+$("#vgrid").onclick=()=>setView("grid");$("#varea").onclick=()=>setView("area");
+function setView(v){state.view=v;const g=$("#vgrid"),a=$("#varea");
+  g.classList.toggle("on",v==="grid");a.classList.toggle("on",v==="area");
+  g.setAttribute("aria-selected",v==="grid");a.setAttribute("aria-selected",v==="area");
+  if(v==="area")$("#sort").value=state.sort="area";render();}
+
+function init(){
+  computeFacets();
+  renderStats();buildPills();
+  buildChips("#typechips",TYPES,"types");buildChips("#domchips",DOMS,"doms");
+  render();
+}
+
+// Load data from a sibling file when hosted on a web server; otherwise use the
+// bundled snapshot. Replacing materials.json on the server refreshes the
+// dashboard with no code changes. Works from file:// too (falls back silently).
+(async ()=>{
+  const note=$("#datanote");
+  try{
+    const res=await fetch("materials.json",{cache:"no-store"});
+    if(res.ok){
+      const data=await res.json();
+      if(Array.isArray(data)&&data.length){
+        MATERIALS=data;
+        if(note)note.textContent="Live data · materials.json";
+      }
+    }
+  }catch(e){
+    if(note)note.textContent="Bundled snapshot";
+  }
+  init();
+})();
+</script>
+</body>
+</html>
